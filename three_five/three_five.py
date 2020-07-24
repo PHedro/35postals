@@ -9,9 +9,7 @@ def three_five(lower=1, upper=101):
     # we need to remember that the upper
     # limit from the range isn't included
     for _num in range(lower, upper):
-        three = not _num % 3
-        five = not _num % 5
-        three_and_five = three and five
+        five, three, three_and_five = _is_three_and_five_multiple(_num)
 
         if three_and_five:
             _value = THREE_FIVE_STR
@@ -29,9 +27,7 @@ def three_five(lower=1, upper=101):
 
 def three_five_generator(lower=1, upper=101):
     for _num in range(lower, upper):
-        three = not _num % 3
-        five = not _num % 5
-        three_and_five = three and five
+        five, three, three_and_five = _is_three_and_five_multiple(_num)
 
         if three_and_five:
             yield THREE_FIVE_STR
@@ -41,6 +37,13 @@ def three_five_generator(lower=1, upper=101):
             yield THREE_STR
         else:
             yield _num
+
+
+def _is_three_and_five_multiple(_num):
+    three = not _num % 3
+    five = not _num % 5
+    three_and_five = three and five
+    return five, three, three_and_five
 
 
 def print_three_five(flavor=three_five, lower=1, upper=101):
