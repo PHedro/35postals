@@ -1,14 +1,26 @@
 import unittest
 from collections import Counter
 
-from three_five.three_five import three_five, three_five_generator
+from three_five.three_five import _is_three_and_five_multiple, three_five, three_five_generator
 
 THREE_STR = "Three"
 FIVE_STR = "Five"
 THREE_FIVE_STR = "ThreeFive"
 
 
+class TestIsThreeAndFiveMultiple(unittest.TestCase):
+    def test_zero_is_not_multiple(self):
+        result = _is_three_and_five_multiple(0)
+        self.assertFalse(any(result))
+
+
 class TestThreeFive(unittest.TestCase):
+    def test_input_0_outputs_0(self):
+        expected = [0]
+        result = three_five(lower=0, upper=1)
+
+        self.assertEqual(expected, result)
+
     def test_input_3_outputs_three(self):
         expected = [THREE_STR]
         result = three_five(lower=3, upper=4)
@@ -82,6 +94,12 @@ class TestThreeFive(unittest.TestCase):
 
 
 class TestThreeFiveGenerator(unittest.TestCase):
+    def test_input_0_outputs_0(self):
+        expected = [0]
+        result = three_five(lower=0, upper=1)
+
+        self.assertEqual(expected, result)
+
     def test_input_3_outputs_three(self):
         expected = [THREE_STR]
         result = list(three_five_generator(lower=3, upper=4))
