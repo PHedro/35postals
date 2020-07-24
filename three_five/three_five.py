@@ -30,13 +30,14 @@ def three_five_generator(lower=1, upper=101):
         five, three, three_and_five = _is_three_and_five_multiple(_num)
 
         if three_and_five:
-            yield THREE_FIVE_STR
+            _value = THREE_FIVE_STR
         elif five:
-            yield FIVE_STR
+            _value = FIVE_STR
         elif three:
-            yield THREE_STR
+            _value = THREE_STR
         else:
-            yield _num
+            _value = _num
+        yield _value
 
 
 def _is_three_and_five_multiple(_num):
