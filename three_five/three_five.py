@@ -27,6 +27,22 @@ def three_five(lower=1, upper=101):
     return result
 
 
+def three_five_generator(lower=1, upper=101):
+    for _num in range(lower, upper):
+        three = not _num % 3
+        five = not _num % 5
+        three_and_five = three and five
+
+        if three_and_five:
+            yield THREE_FIVE_STR
+        elif five:
+            yield FIVE_STR
+        elif three:
+            yield THREE_STR
+        else:
+            yield _num
+
+
 def print_three_five(flavor=three_five, lower=1, upper=101):
     for _item in flavor(lower=lower, upper=upper):
         print(_item)
