@@ -4,6 +4,13 @@ THREE_FIVE_STR = "ThreeFive"
 
 
 def three_five(lower=1, upper=101, print_output=True):
+    """
+    :param lower: start value for desired range
+    :param upper: upper - 1 indicates the last value on the range as python
+        range excludes the last number
+    :param print_output: flag to indicate if the user wishes to print to output
+    :return: list containing the int, "Three", "Five" or "ThreeFive"
+    """
     result = []
 
     # we need to remember that the upper
@@ -28,6 +35,14 @@ def three_five(lower=1, upper=101, print_output=True):
 
 
 def three_five_generator(lower=1, upper=101, print_output=True):
+    """
+    :param lower: start value for desired range
+    :param upper: upper - 1 indicates the last value on the range as python
+        range excludes the last number
+    :param print_output: flag to indicate if the user wishes to print to output
+    :return: generator containing the int, "Three", "Five" or "ThreeFive"
+    """
+
     for _num in range(lower, upper):
         five, three, three_and_five = _is_three_and_five_multiple(_num)
 
