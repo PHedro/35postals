@@ -9,7 +9,6 @@ THREE_FIVE_STR = "ThreeFive"
 
 
 class TestThreeFive(unittest.TestCase):
-
     def test_input_3_outputs_three(self):
         expected = [THREE_STR]
         result = three_five(lower=3, upper=4)
@@ -83,7 +82,6 @@ class TestThreeFive(unittest.TestCase):
 
 
 class TestThreeFiveGenerator(unittest.TestCase):
-
     def test_input_3_outputs_three(self):
         expected = [THREE_STR]
         result = list(three_five_generator(lower=3, upper=4))
