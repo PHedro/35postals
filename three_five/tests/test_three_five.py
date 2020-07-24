@@ -1,7 +1,11 @@
 import unittest
 from collections import Counter
 
-from three_five.three_five import _is_three_and_five_multiple, three_five, three_five_generator
+from three_five.three_five import (
+    _is_three_and_five_multiple,
+    three_five,
+    three_five_generator,
+)
 
 THREE_STR = "Three"
 FIVE_STR = "Five"

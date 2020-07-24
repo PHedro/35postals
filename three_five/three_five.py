@@ -40,9 +40,11 @@ def three_five_generator(lower=1, upper=101):
 
 
 def _is_three_and_five_multiple(_num):
-    three = not _num % 3
-    five = not _num % 5
-    three_and_five = three and five
+    five, three, three_and_five = False, False, False
+    if _num:
+        three = not _num % 3
+        five = not _num % 5
+        three_and_five = three and five
     return five, three, three_and_five
 
 
