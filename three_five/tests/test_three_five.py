@@ -1,4 +1,5 @@
 import unittest
+from collections import Counter
 
 from three_five.three_five import three_five
 
@@ -58,6 +59,24 @@ class TestThreeFive(unittest.TestCase):
             self.FIVE_STR,
         ]
         result = three_five(lower=10, upper=21)
+
+        self.assertEqual(expected, result)
+
+    def test_range_one_to_one_hundred_returns_correctly_amount_of_threes(self):
+        expected = 27
+        result = Counter(three_five()).get(self.THREE_STR)
+
+        self.assertEqual(expected, result)
+
+    def test_range_one_to_one_hundred_returns_correctly_amount_of_fives(self):
+        expected = 14
+        result = Counter(three_five()).get(self.FIVE_STR)
+
+        self.assertEqual(expected, result)
+
+    def test_range_one_to_one_hundred_returns_correctly_amount_of_threefives(self):
+        expected = 6
+        result = Counter(three_five()).get(self.THREE_FIVE_STR)
 
         self.assertEqual(expected, result)
 
