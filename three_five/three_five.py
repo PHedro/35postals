@@ -39,7 +39,7 @@ def three_five_generator(lower=1, upper=101, print_output=True):
 
 
 def _three_five_threefive_or_value(_num):
-    five, three, three_and_five = _is_three_and_five_multiple(_num)
+    three, five, three_and_five = _is_three_and_five_multiple(_num)
     if three_and_five:
         _value = THREE_FIVE_STR
     elif five:
@@ -52,9 +52,9 @@ def _three_five_threefive_or_value(_num):
 
 
 def _is_three_and_five_multiple(_num):
-    five, three, three_and_five = False, False, False
+    three, five, three_and_five = False, False, False
     if _num:
         three = not _num % 3
         five = not _num % 5
         three_and_five = three and five
-    return five, three, three_and_five
+    return three, five, three_and_five
