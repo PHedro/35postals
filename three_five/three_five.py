@@ -53,7 +53,7 @@ def _three_five_threefive_or_value(_num):
 
 def _is_three_and_five_multiple(_num):
     three, five, three_and_five = False, False, False
-    if _num:
+    if _num and isinstance(_num, int):
         three = not _num % 3
         five = not _num % 5
         three_and_five = three and five

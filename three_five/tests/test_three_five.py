@@ -27,13 +27,43 @@ class TestThreeFiveOrValue(unittest.TestCase):
         self.assertEqual(expected, result)
 
     def test_12(self):
+        expected = THREE_STR
+        result = _three_five_threefive_or_value(12)
+        self.assertEqual(expected, result)
+
+    def test_13(self):
         expected = 13
         result = _three_five_threefive_or_value(13)
+        self.assertEqual(expected, result)
+
+    def test_negative_3(self):
+        expected = THREE_STR
+        result = _three_five_threefive_or_value(-3)
+        self.assertEqual(expected, result)
+
+    def test_negative_3_float(self):
+        expected = float(-3)
+        result = _three_five_threefive_or_value(float(-3))
+        self.assertEqual(expected, result)
+
+    def test_negative_5(self):
+        expected = FIVE_STR
+        result = _three_five_threefive_or_value(-5)
+        self.assertEqual(expected, result)
+
+    def test_negative_13(self):
+        expected = -13
+        result = _three_five_threefive_or_value(-13)
         self.assertEqual(expected, result)
 
     def test_15(self):
         expected = THREE_FIVE_STR
         result = _three_five_threefive_or_value(15)
+        self.assertEqual(expected, result)
+
+    def test_float_15(self):
+        expected = float(15)
+        result = _three_five_threefive_or_value(float(15))
         self.assertEqual(expected, result)
 
     def test_17(self):
@@ -72,6 +102,10 @@ class TestIsThreeAndFiveMultiple(unittest.TestCase):
         result = _is_three_and_five_multiple(0)
         self.assertFalse(any(result))
 
+    def test_ASD_is_not_multiple(self):
+        result = _is_three_and_five_multiple('ASD')
+        self.assertFalse(any(result))
+
     def test_13_is_not_multiple(self):
         result = _is_three_and_five_multiple(13)
         self.assertFalse(any(result))
@@ -84,9 +118,17 @@ class TestIsThreeAndFiveMultiple(unittest.TestCase):
         result = _is_three_and_five_multiple(31)
         self.assertFalse(any(result))
 
+    def test_float_31_is_not_multiple(self):
+        result = _is_three_and_five_multiple(float(31))
+        self.assertFalse(any(result))
+
     def test_three_is_multiple(self):
         result_for_three, *_ = _is_three_and_five_multiple(3)
         self.assertTrue(result_for_three)
+
+    def test_float_three_is_not_multiple(self):
+        result_for_three, *_ = _is_three_and_five_multiple(float(3))
+        self.assertFalse(result_for_three)
 
     def test_87_is_multiple(self):
         result_for_three, *_ = _is_three_and_five_multiple(87)
