@@ -1,5 +1,7 @@
+import io
 import unittest
 from collections import Counter
+from unittest.mock import patch
 
 from three_five.constants import FIVE_STR, THREE_FIVE_STR, THREE_STR
 from three_five.three_five import (
@@ -8,6 +10,7 @@ from three_five.three_five import (
     _three_five_threefive_or_value,
     three_five,
     three_five_generator,
+    three_five_print,
 )
 
 
@@ -246,6 +249,56 @@ class TestThreeFive(unittest.TestCase):
         result = Counter(three_five()).get(THREE_FIVE_STR)
 
         self.assertEqual(expected, result)
+
+
+class TestThreeFivePrint(unittest.TestCase):
+    def test_input_0_outputs_0(self):
+        expected = "0\n"
+        with patch("sys.stdout", new=io.StringIO()) as fake_out:
+            three_five_print(lower=0, upper=1)
+            self.assertEqual(fake_out.getvalue(), expected)
+
+    def test_input_1_to_5_outputs_correctly(self):
+        expected = "1\n2\nThree\n4\nFive\n"
+        with patch("sys.stdout", new=io.StringIO()) as fake_out:
+            three_five_print(lower=1, upper=6)
+            self.assertEqual(fake_out.getvalue(), expected)
+
+    def test_input_1_to_4_outputs_correctly(self):
+        expected = "1\n2\nThree\n"
+        with patch("sys.stdout", new=io.StringIO()) as fake_out:
+            three_five_print(lower=1, upper=4)
+            self.assertEqual(fake_out.getvalue(), expected)
+
+    def test_input_5_outputs_five(self):
+        expected = "Five\n"
+        with patch("sys.stdout", new=io.StringIO()) as fake_out:
+            three_five_print(lower=5, upper=6)
+            self.assertEqual(fake_out.getvalue(), expected)
+
+    def test_input_15_outputs_correctly(self):
+        expected = "ThreeFive\n"
+        with patch("sys.stdout", new=io.StringIO()) as fake_out:
+            three_five_print(lower=15, upper=16)
+            self.assertEqual(fake_out.getvalue(), expected)
+
+    def test_input_1_outputs_1(self):
+        expected = "1\n"
+        with patch("sys.stdout", new=io.StringIO()) as fake_out:
+            three_five_print(lower=1, upper=2)
+            self.assertEqual(fake_out.getvalue(), expected)
+
+    def test_input_str_4_outputs_empty(self):
+        expected = ""
+        with patch("sys.stdout", new=io.StringIO()) as fake_out:
+            three_five_print(lower=3, upper="4")
+            self.assertEqual(fake_out.getvalue(), expected)
+
+    def test_input_range_one_to_ten_outputs_correctly(self):
+        expected = "1\n2\nThree\n4\nFive\nThree\n7\n8\nThree\nFive\n"
+        with patch("sys.stdout", new=io.StringIO()) as fake_out:
+            three_five_print(lower=1, upper=11)
+            self.assertEqual(fake_out.getvalue(), expected)
 
 
 class TestThreeFiveGenerator(unittest.TestCase):
