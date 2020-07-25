@@ -1,7 +1,11 @@
 import re
 from copy import copy
 
-from uk_post_codes.constants import BASE_PATTERN, WITH_SPECIAL_CASES_PATTERN
+from uk_post_codes.constants import (
+    BASE_PATTERN,
+    LIMITED_POST_CODES_CHUNKS,
+    WITH_SPECIAL_CASES_PATTERN,
+)
 
 
 """
@@ -50,10 +54,19 @@ def _validate_special_cases(post_code):
     return result
 
 
-def _validate_anguilla(post_code):
+def _validate_regions_that_have_up_to_four_post_codes(post_code):
+    result = False
     post_code = re.sub(" ", "-", post_code)
     chunks = post_code.split("-")
-    return len(chunks) == 2 and chunks[0] == "AI" and chunks[1] == "2640"
+    if 0 < len(chunks) < 3:
+        for outward, inward in LIMITED_POST_CODES_CHUNKS:
+            result = (
+                (chunks[0] == outward and chunks[1] == inward)
+                or chunks[0] == outward + inward
+            )
+            if result:
+                break
+    return result
 
 
 def _validate_base_cases(post_code):
@@ -83,5 +96,6 @@ def _validate_outward_code_base(outward):
 
 
 SPECIAL_CASES_VALIDATION_FUNCTIONS = (
-    _validate_anguilla,
+    _validate_regions_that_have_up_to_four_post_codes,
+    _validate_cayman_islands,
 )

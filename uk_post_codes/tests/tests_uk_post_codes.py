@@ -108,11 +108,11 @@ class UkPostCodesTestCaseAscensionIsland(unittest.TestCase):
         test_code = "ASCN 1ZZ"
         self.assertTrue(validate_post_code(test_code))
 
-    def test_ASCN__1ZZ_invalid(self):
+    def test_ASCN__1ZZ_is_valid(self):
         test_code = "ASCN-1ZZ"
-        self.assertFalse(validate_post_code(test_code))
+        self.assertTrue(validate_post_code(test_code))
 
-    def test_ASCN1ZZ_invalid(self):
+    def test_ASCN1ZZ_is_valid(self):
         test_code = "ASCN1ZZ"
         self.assertTrue(validate_post_code(test_code))
 
@@ -126,9 +126,9 @@ class UkPostCodesTestCaseBritishIndianOceanTerritory(unittest.TestCase):
         test_code = "BBND 1ZZ"
         self.assertTrue(validate_post_code(test_code))
 
-    def test_BBND__1ZZ_invalid(self):
+    def test_BBND__1ZZ_is_valid(self):
         test_code = "BBND-1ZZ"
-        self.assertFalse(validate_post_code(test_code))
+        self.assertTrue(validate_post_code(test_code))
 
     def test_BBND1ZZ_invalid(self):
         test_code = "BBND1ZZ"
@@ -144,9 +144,9 @@ class UkPostCodesTestCaseAkrotiriAndDhekelia(unittest.TestCase):
         test_code = "BFPO 57"
         self.assertTrue(validate_post_code(test_code))
 
-    def test_BFPO__57_invalid(self):
+    def test_BFPO__57_is_valid(self):
         test_code = "BFPO-57"
-        self.assertFalse(validate_post_code(test_code))
+        self.assertTrue(validate_post_code(test_code))
 
     def test_BFPO57_is_valid(self):
         test_code = "BFPO57"
@@ -160,9 +160,9 @@ class UkPostCodesTestCaseAkrotiriAndDhekelia(unittest.TestCase):
         test_code = "BFPO 58"
         self.assertTrue(validate_post_code(test_code))
 
-    def test_BFPO__58_invalid(self):
+    def test_BFPO__58_is_valid(self):
         test_code = "BFPO-58"
-        self.assertFalse(validate_post_code(test_code))
+        self.assertTrue(validate_post_code(test_code))
 
     def test_BFPO58_is_valid(self):
         test_code = "BFPO58"
@@ -176,9 +176,9 @@ class UkPostCodesTestCaseAkrotiriAndDhekelia(unittest.TestCase):
         test_code = "BF1 2AT"
         self.assertTrue(validate_post_code(test_code))
 
-    def test_BF1__2AT_invalid(self):
+    def test_BF1__2AT_is_valid(self):
         test_code = "BF1-2AT"
-        self.assertFalse(validate_post_code(test_code))
+        self.assertTrue(validate_post_code(test_code))
 
     def test_BF12AT_is_valid(self):
         test_code = "BF12AT"
@@ -192,9 +192,9 @@ class UkPostCodesTestCaseAkrotiriAndDhekelia(unittest.TestCase):
         test_code = "BF1 2AU"
         self.assertTrue(validate_post_code(test_code))
 
-    def test_BF1__2Au_invalid(self):
+    def test_BF1__2Au_is_valid(self):
         test_code = "BF1-2AU"
-        self.assertFalse(validate_post_code(test_code))
+        self.assertTrue(validate_post_code(test_code))
 
     def test_BF12AU_is_valid(self):
         test_code = "BF12AU"
@@ -210,11 +210,11 @@ class UkPostCodesTestCaseBritishAntarcticTerritory(unittest.TestCase):
         test_code = "BIQQ 1ZZ"
         self.assertTrue(validate_post_code(test_code))
 
-    def test_BIQQ__1ZZ_invalid(self):
+    def test_BIQQ__1ZZ_is_valid(self):
         test_code = "BIQQ-1ZZ"
-        self.assertFalse(validate_post_code(test_code))
+        self.assertTrue(validate_post_code(test_code))
 
-    def test_BIQQ1ZZ_invalid(self):
+    def test_BIQQ1ZZ_is_valid(self):
         test_code = "BIQQ1ZZ"
         self.assertTrue(validate_post_code(test_code))
 
@@ -228,11 +228,11 @@ class UkPostCodesTestCaseFalklandIslands(unittest.TestCase):
         test_code = "FIQQ 1ZZ"
         self.assertTrue(validate_post_code(test_code))
 
-    def test_FIQQ__1ZZ_invalid(self):
+    def test_FIQQ__1ZZ_is_valid(self):
         test_code = "FIQQ-1ZZ"
-        self.assertFalse(validate_post_code(test_code))
+        self.assertTrue(validate_post_code(test_code))
 
-    def test_FIQQ1ZZ_invalid(self):
+    def test_FIQQ1ZZ_is_valid(self):
         test_code = "FIQQ1ZZ"
         self.assertTrue(validate_post_code(test_code))
 
@@ -245,19 +245,19 @@ class UkPostCodesTestCaseMontserrat(unittest.TestCase):
 
     # as couldn't find a valid postcode for montserrat will be testing
     # with random codes that the regex provided validates
-    def test_FIQQ_1ZZ_is_valid(self):
+    def test_MSR_1234_is_valid(self):
         test_code = "MSR-1234"
         self.assertTrue(validate_post_code(test_code))
 
-    def test_FIQQ__1ZZ_invalid(self):
+    def test_MSR__1234_invalid(self):
         test_code = "MSR 1234"
         self.assertTrue(validate_post_code(test_code))
 
-    def test_FIQQ1ZZ_invalid(self):
+    def test_MSR1234_invalid(self):
         test_code = "MSR1234"
         self.assertTrue(validate_post_code(test_code))
 
-    def test_FIQQ___1ZZ_invalid(self):
+    def test_MSR___1234_invalid(self):
         test_code = "MSR  1234"
         self.assertFalse(validate_post_code(test_code))
 
@@ -381,9 +381,9 @@ class UkPostCodesTestCasePitcairnIslands(unittest.TestCase):
         test_code = "PCRN 1ZZ"
         self.assertTrue(validate_post_code(test_code))
 
-    def test_PCRN__1ZZ_invalid(self):
+    def test_PCRN__1ZZ_is_valid(self):
         test_code = "PCRN-1ZZ"
-        self.assertFalse(validate_post_code(test_code))
+        self.assertTrue(validate_post_code(test_code))
 
     def test_PCRN1ZZ_is_valid(self):
         test_code = "PCRN1ZZ"
@@ -399,9 +399,9 @@ class UkPostCodesTestCaseSouthGeorgiaSouthSandwichIslands(unittest.TestCase):
         test_code = "SIQQ 1ZZ"
         self.assertTrue(validate_post_code(test_code))
 
-    def test_SIQQ__1ZZ_invalid(self):
+    def test_SIQQ__1ZZ_is_valid(self):
         test_code = "SIQQ-1ZZ"
-        self.assertFalse(validate_post_code(test_code))
+        self.assertTrue(validate_post_code(test_code))
 
     def test_SIQQ1ZZ_is_valid(self):
         test_code = "SIQQ1ZZ"
@@ -417,9 +417,9 @@ class UkPostCodesTestCaseSaintHelena(unittest.TestCase):
         test_code = "STHL 1ZZ"
         self.assertTrue(validate_post_code(test_code))
 
-    def test_STHL__1ZZ_invalid(self):
+    def test_STHL__1ZZ_is_valid(self):
         test_code = "STHL-1ZZ"
-        self.assertFalse(validate_post_code(test_code))
+        self.assertTrue(validate_post_code(test_code))
 
     def test_STHL1ZZ_is_valid(self):
         test_code = "STHL1ZZ"
@@ -435,9 +435,9 @@ class UkPostCodesTestCaseTristanCunha(unittest.TestCase):
         test_code = "TDCU 1ZZ"
         self.assertTrue(validate_post_code(test_code))
 
-    def test_TDCU__1ZZ_invalid(self):
+    def test_TDCU__1ZZ_is_valid(self):
         test_code = "TDCU-1ZZ"
-        self.assertFalse(validate_post_code(test_code))
+        self.assertTrue(validate_post_code(test_code))
 
     def test_TDCU1ZZ_invalid(self):
         test_code = "TDCU1ZZ"
@@ -453,9 +453,9 @@ class UkPostCodesTestCaseTurksCaicosIslands(unittest.TestCase):
         test_code = "TKCA 1ZZ"
         self.assertTrue(validate_post_code(test_code))
 
-    def test_TKCA__1ZZ_invalid(self):
+    def test_TKCA__1ZZ_is_valid(self):
         test_code = "TKCA-1ZZ"
-        self.assertFalse(validate_post_code(test_code))
+        self.assertTrue(validate_post_code(test_code))
 
     def test_TKCA1ZZ_is_valid(self):
         test_code = "TKCA1ZZ"
@@ -479,7 +479,7 @@ class UkPostCodesTestCaseTortolaCentral(unittest.TestCase):
         test_code = "VG 1110"
         self.assertTrue(validate_post_code(test_code))
 
-    def test_TKCA___1ZZ_invalid(self):
+    def test_VG___1110_invalid(self):
         test_code = "VG   1110"
         self.assertFalse(validate_post_code(test_code))
 
@@ -505,7 +505,7 @@ class UkPostCodesTestCaseTortolaEast(unittest.TestCase):
         test_code = "VG 1120"
         self.assertTrue(validate_post_code(test_code))
 
-    def test_TKCA___1ZZ_invalid(self):
+    def test_VG___1120_invalid(self):
         test_code = "VG   1120"
         self.assertFalse(validate_post_code(test_code))
 
@@ -531,7 +531,7 @@ class UkPostCodesTestCaseTortolaWest(unittest.TestCase):
         test_code = "VG 1130"
         self.assertTrue(validate_post_code(test_code))
 
-    def test_TKCA___1ZZ_invalid(self):
+    def test_VG___1130_invalid(self):
         test_code = "VG   1130"
         self.assertFalse(validate_post_code(test_code))
 
@@ -557,7 +557,7 @@ class UkPostCodesTestCaseAnegada(unittest.TestCase):
         test_code = "VG 1140"
         self.assertTrue(validate_post_code(test_code))
 
-    def test_TKCA___1ZZ_invalid(self):
+    def test_VG___1140_invalid(self):
         test_code = "VG   1140"
         self.assertFalse(validate_post_code(test_code))
 
@@ -583,7 +583,7 @@ class UkPostCodesTestCaseVirginGorda(unittest.TestCase):
         test_code = "VG 1150"
         self.assertTrue(validate_post_code(test_code))
 
-    def test_TKCA___1ZZ_invalid(self):
+    def test_VG___1150_invalid(self):
         test_code = "VG   1150"
         self.assertFalse(validate_post_code(test_code))
 
@@ -609,7 +609,7 @@ class UkPostCodesTestCaseJostVanDyke(unittest.TestCase):
         test_code = "VG 1160"
         self.assertTrue(validate_post_code(test_code))
 
-    def test_TKCA___1ZZ_invalid(self):
+    def test_VG___1160_invalid(self):
         test_code = "VG   1160"
         self.assertFalse(validate_post_code(test_code))
 
