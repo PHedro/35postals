@@ -28,7 +28,32 @@ def validate_post_code(post_code):
         copy_post_code = copy_post_code.strip()
 
         result = _validate_base_cases(copy_post_code)
+
+        # in the case the base cases don't validate the code let's give the
+        # special cases a try
+        if not result:
+            result = _validate_special_cases(copy_post_code)
+
     return result
+
+
+def _validate_special_cases(post_code):
+    result = False
+    for _validation in SPECIAL_CASES_VALIDATION_FUNCTIONS:
+        # making a copy of the data instead of reference in case we need to original
+        # later on so we do not make changes to it and that way in the validation
+        # function we're able to make inplace transformations without the concerns
+        copy_post_code = copy(post_code)
+        result = _validation(post_code=copy_post_code)
+        if result:
+            break
+    return result
+
+
+def _validate_anguilla(post_code):
+    post_code = re.sub(" ", "-", post_code)
+    chunks = post_code.split("-")
+    return len(chunks) == 2 and chunks[0] == "AI" and chunks[1] == "2640"
 
 
 def _validate_base_cases(post_code):
@@ -55,3 +80,8 @@ def _validate_inward_code_base(inward):
 
 def _validate_outward_code_base(outward):
     return re.match("^[A-Z]{1,2}[0-9][A-Z0-9]?$", outward)
+
+
+SPECIAL_CASES_VALIDATION_FUNCTIONS = (
+    _validate_anguilla,
+)

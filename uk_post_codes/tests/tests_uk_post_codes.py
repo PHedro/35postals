@@ -90,11 +90,11 @@ class UkPostCodesTestCaseAnguilla(unittest.TestCase):
         test_code = "AI-2640"
         self.assertTrue(validate_post_code(test_code))
 
-    def test_AI_2640_invalid(self):
+    def test_AI_2640_is_valid(self):
         test_code = "AI 2640"
         self.assertTrue(validate_post_code(test_code))
 
-    def test_AI2640_invalid(self):
+    def test_AI2640_is_valid(self):
         test_code = "AI2640"
         self.assertTrue(validate_post_code(test_code))
 
@@ -148,7 +148,7 @@ class UkPostCodesTestCaseAkrotiriAndDhekelia(unittest.TestCase):
         test_code = "BFPO-57"
         self.assertFalse(validate_post_code(test_code))
 
-    def test_BFPO57_invalid(self):
+    def test_BFPO57_is_valid(self):
         test_code = "BFPO57"
         self.assertTrue(validate_post_code(test_code))
 
@@ -164,7 +164,7 @@ class UkPostCodesTestCaseAkrotiriAndDhekelia(unittest.TestCase):
         test_code = "BFPO-58"
         self.assertFalse(validate_post_code(test_code))
 
-    def test_BFPO58_invalid(self):
+    def test_BFPO58_is_valid(self):
         test_code = "BFPO58"
         self.assertTrue(validate_post_code(test_code))
 

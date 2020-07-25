@@ -148,7 +148,7 @@ class UkPostCodesRegexTestCaseAkrotiriAndDhekelia(unittest.TestCase):
         test_code = "BFPO-57"
         self.assertFalse(validate_post_code_regex(test_code))
 
-    def test_BFPO57_invalid(self):
+    def test_BFPO57_is_valid(self):
         test_code = "BFPO57"
         self.assertTrue(validate_post_code_regex(test_code))
 
@@ -164,7 +164,7 @@ class UkPostCodesRegexTestCaseAkrotiriAndDhekelia(unittest.TestCase):
         test_code = "BFPO-58"
         self.assertFalse(validate_post_code_regex(test_code))
 
-    def test_BFPO58_invalid(self):
+    def test_BFPO58_is_valid(self):
         test_code = "BFPO58"
         self.assertTrue(validate_post_code_regex(test_code))
 
