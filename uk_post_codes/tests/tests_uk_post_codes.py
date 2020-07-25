@@ -249,11 +249,11 @@ class UkPostCodesTestCaseMontserrat(unittest.TestCase):
         test_code = "MSR-1234"
         self.assertTrue(validate_post_code(test_code))
 
-    def test_MSR__1234_invalid(self):
+    def test_MSR__1234_is_valid(self):
         test_code = "MSR 1234"
         self.assertTrue(validate_post_code(test_code))
 
-    def test_MSR1234_invalid(self):
+    def test_MSR1234_is_valid(self):
         test_code = "MSR1234"
         self.assertTrue(validate_post_code(test_code))
 

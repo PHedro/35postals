@@ -62,10 +62,13 @@ def _validate_regions_that_have_up_to_four_post_codes(post_code):
     return result
 
 
-def _validate_moserrat(post_code):
-    result = post_code.startswith("MSR")
+def _validate_montserrat(post_code):
+    try:
+        inward = int(post_code[3:])
+    except ValueError:
+        return False
 
-    return result
+    return post_code.startswith("MSR") and -1 < inward < 10000
 
 
 def _validate_cayman_islands(post_code):
@@ -112,4 +115,5 @@ def _validate_outward_code_base(outward):
 SPECIAL_CASES_VALIDATION_FUNCTIONS = (
     _validate_regions_that_have_up_to_four_post_codes,
     _validate_cayman_islands,
+    _validate_montserrat,
 )
