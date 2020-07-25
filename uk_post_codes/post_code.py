@@ -2,7 +2,6 @@ import re
 from copy import copy
 
 from uk_post_codes.constants import (
-    BASE_PATTERN,
     LIMITED_POST_CODES_CHUNKS,
     WITH_SPECIAL_CASES_PATTERN,
 )
@@ -66,6 +65,22 @@ def _validate_regions_that_have_up_to_four_post_codes(post_code):
             )
             if result:
                 break
+    return result
+
+
+def _validate_cayman_islands(post_code):
+    result = False
+    if 6 < len(post_code) < 9 and post_code.startswith("KY"):
+        post_code = re.sub("-", "", re.sub(" ", "", post_code))
+        first_number = post_code[2]
+        inward = post_code[3:]
+        try:
+            first_number = int(first_number)
+            inward = int(inward)
+        except ValueError:
+            return False
+        result = first_number in {1, 2, 3} and 1000 < inward < 2502
+
     return result
 
 
