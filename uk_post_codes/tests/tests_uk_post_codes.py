@@ -28,15 +28,15 @@ class UkPostCodesTestCaseCommonCases(unittest.TestCase):
         test_code = "DN55 1PT"
         self.assertTrue(validate_post_code(test_code))
 
-    def test_EC1A1BB_invalid(self):
+    def test_EC1A1BB_is_valid(self):
         test_code = "EC1A1BB"
         self.assertTrue(validate_post_code(test_code))
 
-    def test_W1A0AX_invalid(self):
+    def test_W1A0AX_is_valid(self):
         test_code = "W1A0AX"
         self.assertTrue(validate_post_code(test_code))
 
-    def test_M11AE_invalid(self):
+    def test_M11AE_is_valid(self):
         test_code = "M11AE"
         self.assertTrue(validate_post_code(test_code))
 
@@ -44,11 +44,11 @@ class UkPostCodesTestCaseCommonCases(unittest.TestCase):
         test_code = "B338TH"
         self.assertTrue(validate_post_code(test_code))
 
-    def test_CR26XH_invalid(self):
+    def test_CR26XH_is_valid(self):
         test_code = "CR26XH"
         self.assertTrue(validate_post_code(test_code))
 
-    def test_DN551PT_invalid(self):
+    def test_DN551PT_is_valid(self):
         test_code = "DN551PT"
         self.assertTrue(validate_post_code(test_code))
 
