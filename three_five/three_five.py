@@ -1,24 +1,31 @@
 from three_five.constants import FIVE_STR, THREE_FIVE_STR, THREE_STR
 
 
-def three_five(lower=1, upper=101, print_output=True):
+def three_five(lower=1, upper=101):
     """
     :param lower: start value for desired range
     :param upper: upper - 1 indicates the last value on the range as python
         range excludes the last number
-    :param print_output: flag to indicate if the user wishes to print to output
     :return: list containing the int, "Three", "Five" or "ThreeFive"
     """
     result = []
 
-    for _num in range(lower, upper):
-        _value = _three_five_threefive_or_value(_num)
-
-        if print_output:
-            print(_value)
-        result.append(_value)
+    if _check_if_range_boundaries_are_valid(lower=lower, upper=upper):
+        result = [_three_five_threefive_or_value(_num) for _num in range(lower, upper)]
 
     return result
+
+
+def three_five_print(lower=1, upper=101):
+    """
+    :param lower: start value for desired range
+    :param upper: upper - 1 indicates the last value on the range as python
+        range excludes the last number
+    result => prints the int, "Three", "Five" or "ThreeFive"
+    """
+    if _check_if_range_boundaries_are_valid(lower=lower, upper=upper):
+        for _num in range(lower, upper):
+            print(_three_five_threefive_or_value(_num))
 
 
 def three_five_generator(lower=1, upper=101, print_output=True):
@@ -30,12 +37,13 @@ def three_five_generator(lower=1, upper=101, print_output=True):
     :return: generator containing the int, "Three", "Five" or "ThreeFive"
     """
 
-    for _num in range(lower, upper):
-        _value = _three_five_threefive_or_value(_num)
+    if _check_if_range_boundaries_are_valid(lower=lower, upper=upper):
+        for _num in range(lower, upper):
+            _value = _three_five_threefive_or_value(_num)
 
-        if print_output:
-            print(_value)
-        yield _value
+            if print_output:
+                print(_value)
+            yield _value
 
 
 def _three_five_threefive_or_value(_num):
@@ -58,3 +66,7 @@ def _is_three_and_five_multiple(_num):
         five = not _num % 5
         three_and_five = three and five
     return three, five, three_and_five
+
+
+def _check_if_range_boundaries_are_valid(lower, upper):
+    return isinstance(lower, int) and (isinstance(upper, int) and upper > lower)

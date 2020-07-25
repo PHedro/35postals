@@ -3,11 +3,29 @@ from collections import Counter
 
 from three_five.constants import FIVE_STR, THREE_FIVE_STR, THREE_STR
 from three_five.three_five import (
+    _check_if_range_boundaries_are_valid,
     _is_three_and_five_multiple,
     _three_five_threefive_or_value,
     three_five,
     three_five_generator,
 )
+
+
+class TestRangeBoundaries(unittest.TestCase):
+    def test_both_valid_int(self):
+        self.assertTrue(_check_if_range_boundaries_are_valid(0, 3))
+
+    def test_both_floats_and_upper_greater_than_lower(self):
+        self.assertFalse(_check_if_range_boundaries_are_valid(float(0), float(3)))
+
+    def test_upper_float_and_upper_greater_than_lower(self):
+        self.assertFalse(_check_if_range_boundaries_are_valid(0, float(3)))
+
+    def test_upper_string_and_upper_greater_than_lower(self):
+        self.assertFalse(_check_if_range_boundaries_are_valid(0, "3"))
+
+    def test_both_valid_int_lower_greater_than_upper(self):
+        self.assertFalse(_check_if_range_boundaries_are_valid(5, 3))
 
 
 class TestThreeFiveOrValue(unittest.TestCase):
@@ -103,7 +121,7 @@ class TestIsThreeAndFiveMultiple(unittest.TestCase):
         self.assertFalse(any(result))
 
     def test_ASD_is_not_multiple(self):
-        result = _is_three_and_five_multiple('ASD')
+        result = _is_three_and_five_multiple("ASD")
         self.assertFalse(any(result))
 
     def test_13_is_not_multiple(self):
@@ -240,6 +258,36 @@ class TestThreeFiveGenerator(unittest.TestCase):
     def test_input_3_outputs_three(self):
         expected = [THREE_STR]
         result = list(three_five_generator(lower=3, upper=4))
+
+        self.assertEqual(expected, result)
+
+    def test_input_float3_outputs_empty(self):
+        expected = []
+        result = list(three_five_generator(lower=float(3), upper=4))
+
+        self.assertEqual(expected, result)
+
+    def test_input_str_4_outputs_empty(self):
+        expected = []
+        result = list(three_five_generator(lower=3, upper="4"))
+
+        self.assertEqual(expected, result)
+
+    def test_input_both_floats_outputs_empty(self):
+        expected = []
+        result = list(three_five_generator(lower=float(3), upper=float(4)))
+
+        self.assertEqual(expected, result)
+
+    def test_input_lower_greater_than_upper_outputs_empty(self):
+        expected = []
+        result = list(three_five_generator(lower=10, upper=3))
+
+        self.assertEqual(expected, result)
+
+    def test_input_lower_equals_to_upper_outputs_empty(self):
+        expected = []
+        result = list(three_five_generator(lower=10, upper=10))
 
         self.assertEqual(expected, result)
 
