@@ -1,6 +1,6 @@
 import unittest
 
-from uk_post_codes.post_code import validate_post_code_regex
+from uk_post_codes.validate import validate_post_code_regex
 
 
 class UkPostCodesRegexTestCaseCommonCases(unittest.TestCase):
