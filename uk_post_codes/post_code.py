@@ -46,7 +46,7 @@ def _validate_special_cases(post_code):
         # making a copy of the data instead of reference in case we need to original
         # later on so we do not make changes to it and that way in the validation
         # function we're able to make inplace transformations without the concerns
-        copy_post_code = copy(post_code)
+        copy_post_code = re.sub("-", "", re.sub(" ", "", post_code))
         result = _validation(post_code=copy_post_code)
         if result:
             break
@@ -55,23 +55,22 @@ def _validate_special_cases(post_code):
 
 def _validate_regions_that_have_up_to_four_post_codes(post_code):
     result = False
-    post_code = re.sub(" ", "-", post_code)
-    chunks = post_code.split("-")
-    if 0 < len(chunks) < 3:
-        for outward, inward in LIMITED_POST_CODES_CHUNKS:
-            result = (
-                (chunks[0] == outward and chunks[1] == inward)
-                or chunks[0] == outward + inward
-            )
-            if result:
-                break
+    for outward, inward in LIMITED_POST_CODES_CHUNKS:
+        result = post_code == outward + inward
+        if result:
+            break
+    return result
+
+
+def _validate_moserrat(post_code):
+    result = post_code.startswith("MSR")
+
     return result
 
 
 def _validate_cayman_islands(post_code):
     result = False
     if 6 < len(post_code) < 9 and post_code.startswith("KY"):
-        post_code = re.sub("-", "", re.sub(" ", "", post_code))
         first_number = post_code[2]
         inward = post_code[3:]
         try:

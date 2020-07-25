@@ -98,9 +98,9 @@ class UkPostCodesTestCaseAnguilla(unittest.TestCase):
         test_code = "AI2640"
         self.assertTrue(validate_post_code(test_code))
 
-    def test_AI2_640_invalid(self):
+    def test_AI2_640_is_valid(self):
         test_code = "AI2 640"
-        self.assertFalse(validate_post_code(test_code))
+        self.assertTrue(validate_post_code(test_code))
 
 
 class UkPostCodesTestCaseAscensionIsland(unittest.TestCase):
@@ -152,9 +152,9 @@ class UkPostCodesTestCaseAkrotiriAndDhekelia(unittest.TestCase):
         test_code = "BFPO57"
         self.assertTrue(validate_post_code(test_code))
 
-    def test_BFPO___57_invalid(self):
+    def test_BFPO___57_is_valid(self):
         test_code = "BFPO  57"
-        self.assertFalse(validate_post_code(test_code))
+        self.assertTrue(validate_post_code(test_code))
 
     def test_BFPO_58_is_valid(self):
         test_code = "BFPO 58"
@@ -168,9 +168,9 @@ class UkPostCodesTestCaseAkrotiriAndDhekelia(unittest.TestCase):
         test_code = "BFPO58"
         self.assertTrue(validate_post_code(test_code))
 
-    def test_BFPO___58_invalid(self):
+    def test_BFPO___58_is_valid(self):
         test_code = "BFPO  58"
-        self.assertFalse(validate_post_code(test_code))
+        self.assertTrue(validate_post_code(test_code))
 
     def test_BF1_2AT_is_valid(self):
         test_code = "BF1 2AT"
@@ -184,9 +184,9 @@ class UkPostCodesTestCaseAkrotiriAndDhekelia(unittest.TestCase):
         test_code = "BF12AT"
         self.assertTrue(validate_post_code(test_code))
 
-    def test_BF1___2AT_invalid(self):
+    def test_BF1___2AT_is_valid(self):
         test_code = "BF1  2AT"
-        self.assertFalse(validate_post_code(test_code))
+        self.assertTrue(validate_post_code(test_code))
 
     def test_BF1_2AU_is_valid(self):
         test_code = "BF1 2AU"
@@ -200,9 +200,9 @@ class UkPostCodesTestCaseAkrotiriAndDhekelia(unittest.TestCase):
         test_code = "BF12AU"
         self.assertTrue(validate_post_code(test_code))
 
-    def test_BF1___2AU_invalid(self):
+    def test_BF1___2AU_is_valid(self):
         test_code = "BF1  2AU"
-        self.assertFalse(validate_post_code(test_code))
+        self.assertTrue(validate_post_code(test_code))
 
 
 class UkPostCodesTestCaseBritishAntarcticTerritory(unittest.TestCase):
