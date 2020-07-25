@@ -46,8 +46,7 @@ def _validate_special_cases(post_code):
         # making a copy of the data instead of reference in case we need to original
         # later on so we do not make changes to it and that way in the validation
         # function we're able to make inplace transformations without the concerns
-        copy_post_code = re.sub("-", "", re.sub(" ", "", post_code))
-        result = _validation(post_code=copy_post_code)
+        result = _validation(post_code=re.sub("-", "", re.sub(" ", "", post_code)))
         if result:
             break
     return result
@@ -86,6 +85,18 @@ def _validate_cayman_islands(post_code):
     return result
 
 
+def _validate_bermuda(post_code):
+    result = len(post_code) == 4
+    if result:
+        try:
+            result = -1 < int(post_code[-2:]) < 100 and re.match(
+                "[A-Z]{2}", post_code[:2]
+            )
+        except ValueError:
+            result = False
+    return result
+
+
 def _validate_base_cases(post_code):
     result = False
 
@@ -116,4 +127,5 @@ SPECIAL_CASES_VALIDATION_FUNCTIONS = (
     _validate_regions_that_have_up_to_four_post_codes,
     _validate_cayman_islands,
     _validate_montserrat,
+    _validate_bermuda,
 )

@@ -622,5 +622,31 @@ class UkPostCodesTestCaseJostVanDyke(unittest.TestCase):
         self.assertFalse(validate_post_code(test_code))
 
 
+class UkPostCodesTestCaseBermuda(unittest.TestCase):
+    def test_VG11_is_valid(self):
+        test_code = "VG11"
+        self.assertTrue(validate_post_code(test_code))
+
+    def test_VG__11_is_valid(self):
+        test_code = "VG-11"
+        self.assertTrue(validate_post_code(test_code))
+
+    def test_VG_11_is_valid(self):
+        test_code = "VG 11"
+        self.assertTrue(validate_post_code(test_code))
+
+    def test_VG___11_is_valid(self):
+        test_code = "VG   11"
+        self.assertTrue(validate_post_code(test_code))
+
+    def test_VG____11_is_valid(self):
+        test_code = "VG   11"
+        self.assertTrue(validate_post_code(test_code))
+
+    def test_VG1_invalid(self):
+        test_code = "VG1"
+        self.assertFalse(validate_post_code(test_code))
+
+
 if __name__ == "__main__":
     unittest.main()
