@@ -1,15 +1,13 @@
 import unittest
 from collections import Counter
 
+from three_five.constants import FIVE_STR, THREE_FIVE_STR, THREE_STR
 from three_five.three_five import (
     _is_three_and_five_multiple,
-    _three_five_threefive_or_value, three_five,
+    _three_five_threefive_or_value,
+    three_five,
     three_five_generator,
 )
-
-THREE_STR = "Three"
-FIVE_STR = "Five"
-THREE_FIVE_STR = "ThreeFive"
 
 
 class TestThreeFiveOrValue(unittest.TestCase):

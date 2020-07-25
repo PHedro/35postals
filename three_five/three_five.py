@@ -1,6 +1,4 @@
-THREE_STR = "Three"
-FIVE_STR = "Five"
-THREE_FIVE_STR = "ThreeFive"
+from three_five.constants import FIVE_STR, THREE_FIVE_STR, THREE_STR
 
 
 def three_five(lower=1, upper=101, print_output=True):
