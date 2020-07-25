@@ -3,7 +3,7 @@ from collections import Counter
 
 from three_five.three_five import (
     _is_three_and_five_multiple,
-    three_five,
+    _three_five_threefive_or_value, three_five,
     three_five_generator,
 )
 
@@ -12,7 +12,68 @@ FIVE_STR = "Five"
 THREE_FIVE_STR = "ThreeFive"
 
 
+class TestThreeFiveOrValue(unittest.TestCase):
+    def test_zero(self):
+        expected = 0
+        result = _three_five_threefive_or_value(0)
+        self.assertEqual(expected, result)
+
+    def test_3(self):
+        expected = THREE_STR
+        result = _three_five_threefive_or_value(3)
+        self.assertEqual(expected, result)
+
+    def test_5(self):
+        expected = FIVE_STR
+        result = _three_five_threefive_or_value(5)
+        self.assertEqual(expected, result)
+
+    def test_12(self):
+        expected = 13
+        result = _three_five_threefive_or_value(13)
+        self.assertEqual(expected, result)
+
+    def test_15(self):
+        expected = THREE_FIVE_STR
+        result = _three_five_threefive_or_value(15)
+        self.assertEqual(expected, result)
+
+    def test_17(self):
+        expected = 17
+        result = _three_five_threefive_or_value(17)
+        self.assertEqual(expected, result)
+
+    def test_45(self):
+        expected = THREE_FIVE_STR
+        result = _three_five_threefive_or_value(45)
+        self.assertEqual(expected, result)
+
+    def test_55(self):
+        expected = FIVE_STR
+        result = _three_five_threefive_or_value(55)
+        self.assertEqual(expected, result)
+
+    def test_42(self):
+        expected = THREE_STR
+        result = _three_five_threefive_or_value(42)
+        self.assertEqual(expected, result)
+
+    def test_89(self):
+        expected = 89
+        result = _three_five_threefive_or_value(89)
+        self.assertEqual(expected, result)
+
+    def test_87(self):
+        expected = THREE_STR
+        result = _three_five_threefive_or_value(87)
+        self.assertEqual(expected, result)
+
+
 class TestIsThreeAndFiveMultiple(unittest.TestCase):
+    def test_zero_is_not_multiple(self):
+        result = _is_three_and_five_multiple(0)
+        self.assertFalse(any(result))
+
     def test_zero_is_not_multiple(self):
         result = _is_three_and_five_multiple(0)
         self.assertFalse(any(result))
