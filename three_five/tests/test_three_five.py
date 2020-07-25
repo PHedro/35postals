@@ -72,9 +72,41 @@ class TestIsThreeAndFiveMultiple(unittest.TestCase):
         result = _is_three_and_five_multiple(0)
         self.assertFalse(any(result))
 
-    def test_zero_is_not_multiple(self):
-        result = _is_three_and_five_multiple(0)
+    def test_13_is_not_multiple(self):
+        result = _is_three_and_five_multiple(13)
         self.assertFalse(any(result))
+
+    def test_88_is_not_multiple(self):
+        result = _is_three_and_five_multiple(88)
+        self.assertFalse(any(result))
+
+    def test_31_is_not_multiple(self):
+        result = _is_three_and_five_multiple(31)
+        self.assertFalse(any(result))
+
+    def test_three_is_multiple(self):
+        result_for_three, *_ = _is_three_and_five_multiple(3)
+        self.assertTrue(result_for_three)
+
+    def test_87_is_multiple(self):
+        result_for_three, *_ = _is_three_and_five_multiple(87)
+        self.assertTrue(result_for_three)
+
+    def test_99_is_multiple(self):
+        result_for_three, *_ = _is_three_and_five_multiple(99)
+        self.assertTrue(result_for_three)
+
+    def test_five_is_multiple(self):
+        _, result_for_five, _ = _is_three_and_five_multiple(5)
+        self.assertTrue(result_for_five)
+
+    def test_15_is_multiple_for_both(self):
+        result = _is_three_and_five_multiple(15)
+        self.assertTrue(all(result))
+
+    def test_45_is_multiple_for_both(self):
+        result = _is_three_and_five_multiple(15)
+        self.assertTrue(all(result))
 
 
 class TestThreeFive(unittest.TestCase):
