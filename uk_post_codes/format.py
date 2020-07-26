@@ -14,6 +14,11 @@ def format_post_code(raw_data):
     :param raw_data: non formatted and possibly with invalid characters
     to be formatted as postal code
     :return: formatted and valid postal code
+
+    Gets a string that might contains a postal code and after cleaning invalid
+    characters try to validate the input against known rules and if valid
+    returns it using the default format used for the detected region
+
     """
     formatted_data = ""
     if isinstance(raw_data, str) and len(raw_data) > 3:

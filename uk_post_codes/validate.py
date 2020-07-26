@@ -16,11 +16,23 @@ SW      1W          0       NY
 
 
 def validate_post_code_regex(post_code):
+    """
+    Validate the post_code against the regex that includes special cases provided
+    by: https://en.wikipedia.org/wiki/Postcodes_in_the_United_Kingdom#Formatting
+    :param post_code: string to be validated
+    :return: boolean indicating if it is a valid or invalid post code
+    """
     base_pattern = re.compile(WITH_SPECIAL_CASES_PATTERN)
     return base_pattern.match(post_code)
 
 
 def validate_post_code(post_code):
+    """
+    Validate the post_code it does a little more work on the string passed
+    considering possible typos and common the interchange of spaces and dashes
+    :param post_code: string to be validated
+    :return: boolean indicating if it is a valid or invalid post code
+    """
     result = False
 
     # as the smaller special case is valid containing 4 characters LL99
