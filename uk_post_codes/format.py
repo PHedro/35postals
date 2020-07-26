@@ -10,6 +10,11 @@ from uk_post_codes.validate import (
 
 
 def format_post_code(raw_data):
+    """
+    :param raw_data: non formatted and possibly with invalid characters
+    to be formatted as postal code
+    :return: formatted and valid postal code
+    """
     formatted_data = ""
     if isinstance(raw_data, str) and len(raw_data) > 3:
         data = "".join(_char for _char in raw_data if _char.isalnum()).upper()
