@@ -30,17 +30,17 @@ def validate_post_code(post_code):
         copy_post_code = copy(post_code)
         copy_post_code = copy_post_code.strip()
 
-        result = validate_base_cases(copy_post_code)
+        result = _validate_base_cases(copy_post_code)
 
         # in the case the base cases don't validate the code let's give the
         # special cases a try
         if not result:
-            result = validate_special_cases(copy_post_code)
+            result = _validate_special_cases(copy_post_code)
 
     return result
 
 
-def validate_special_cases(post_code):
+def _validate_special_cases(post_code):
     result = False
     for _validation in SPECIAL_CASES_VALIDATION_FUNCTIONS:
         # making a copy of the data instead of reference in case we need to original
@@ -52,7 +52,7 @@ def validate_special_cases(post_code):
     return result
 
 
-def validate_regions_that_have_up_to_four_post_codes(post_code):
+def _validate_regions_that_have_up_to_four_post_codes(post_code):
     result = False
     for outward, inward in LIMITED_POST_CODES_CHUNKS:
         result = post_code == outward + inward
@@ -61,7 +61,7 @@ def validate_regions_that_have_up_to_four_post_codes(post_code):
     return result
 
 
-def validate_montserrat(post_code):
+def _validate_montserrat(post_code):
     try:
         inward = int(post_code[3:])
     except ValueError:
@@ -70,7 +70,7 @@ def validate_montserrat(post_code):
     return post_code.startswith("MSR") and -1 < inward < 10000
 
 
-def validate_cayman_islands(post_code):
+def _validate_cayman_islands(post_code):
     result = False
     if 6 < len(post_code) < 9 and post_code.startswith("KY"):
         first_number = post_code[2]
@@ -85,7 +85,7 @@ def validate_cayman_islands(post_code):
     return result
 
 
-def validate_bermuda(post_code):
+def _validate_bermuda(post_code):
     result = len(post_code) == 4
     if result:
         try:
@@ -97,7 +97,7 @@ def validate_bermuda(post_code):
     return result
 
 
-def validate_base_cases(post_code):
+def _validate_base_cases(post_code):
     result = False
 
     chunks = post_code.split(" ")
@@ -124,8 +124,8 @@ def _validate_outward_code_base(outward):
 
 
 SPECIAL_CASES_VALIDATION_FUNCTIONS = (
-    validate_regions_that_have_up_to_four_post_codes,
-    validate_cayman_islands,
-    validate_montserrat,
-    validate_bermuda,
+    _validate_regions_that_have_up_to_four_post_codes,
+    _validate_cayman_islands,
+    _validate_montserrat,
+    _validate_bermuda,
 )

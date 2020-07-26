@@ -1,11 +1,11 @@
 import re
 
 from uk_post_codes.validate import (
-    validate_base_cases,
-    validate_bermuda,
-    validate_cayman_islands,
-    validate_montserrat,
-    validate_regions_that_have_up_to_four_post_codes,
+    _validate_base_cases,
+    _validate_bermuda,
+    _validate_cayman_islands,
+    _validate_montserrat,
+    _validate_regions_that_have_up_to_four_post_codes,
 )
 
 
@@ -25,19 +25,19 @@ def format_post_code(raw_data):
     return formatted_data
 
 
-def bermuda_formatter(data):
+def _bermuda_formatter(data):
     return "{} {}".format(data[:2], data[-2:])
 
 
-def cayman_formatter(data):
+def _cayman_formatter(data):
     return "{}-{}".format(data[:3], data[-4:])
 
 
-def montserrat_formatter(data):
+def _montserrat_formatter(data):
     return "{}-{}".format(data[:3], data[-4:])
 
 
-def up_to_four_formatter(data):
+def _up_to_four_formatter(data):
     formatted_data = ""
     if data.startswith("AI"):
         formatted_data = "{}-{}".format(data[:2], data[-4:])
@@ -52,14 +52,14 @@ def up_to_four_formatter(data):
     return formatted_data
 
 
-def base_formatter(data):
+def _base_formatter(data):
     return "{} {}".format(data[:-3], data[-3:])
 
 
 VALIDATORS_FORMATTER = (
-    (validate_bermuda, bermuda_formatter),
-    (validate_cayman_islands, cayman_formatter),
-    (validate_montserrat, montserrat_formatter),
-    (validate_regions_that_have_up_to_four_post_codes, up_to_four_formatter),
-    (validate_base_cases, base_formatter),
+    (_validate_bermuda, _bermuda_formatter),
+    (_validate_cayman_islands, _cayman_formatter),
+    (_validate_montserrat, _montserrat_formatter),
+    (_validate_regions_that_have_up_to_four_post_codes, _up_to_four_formatter),
+    (_validate_base_cases, _base_formatter),
 )
