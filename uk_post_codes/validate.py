@@ -54,11 +54,12 @@ def validate_post_code(post_code):
 
 def _validate_special_cases(post_code):
     result = False
+    cleaned_post_code = re.sub("-", "", re.sub(" ", "", post_code))
     for _validation in SPECIAL_CASES_VALIDATION_FUNCTIONS:
         # making a copy of the data instead of reference in case we need to original
         # later on so we do not make changes to it and that way in the validation
-        # function we're able to make inplace transformations without the concerns
-        result = _validation(post_code=re.sub("-", "", re.sub(" ", "", post_code)))
+        # function we're able to make inplace transformations without concerns
+        result = _validation(post_code=copy(cleaned_post_code))
         if result:
             break
     return result
